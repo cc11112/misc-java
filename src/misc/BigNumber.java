@@ -34,8 +34,13 @@ public class BigNumber {
 		}
 
 		for (int i = 0; i < size; ++i) {
-			System.out.println("size:" + data[i][0] + " Milliseconds:"
-					+ data[i][1]);
+			System.out.println(data[i][0]);
+		}
+		
+		System.out.println("-------------------");
+		
+		for (int i = 0; i < size; ++i) {
+			System.out.println(data[i][1]);
 		}
 	}
 
@@ -57,10 +62,10 @@ public class BigNumber {
 
 	private long calculate(BigInteger bigInteger1, BigInteger bigInteger2) {
 
-		System.out.println("bigInteger1 Length:"
-				+ bigInteger1.toString().length());
-		System.out.println("bigInteger2 Length:"
-				+ bigInteger2.toString().length());
+//		System.out.println("bigInteger1 Length:"
+//				+ bigInteger1.toString().length());
+//		System.out.println("bigInteger2 Length:"
+//				+ bigInteger2.toString().length());
 
 		long startTime = System.currentTimeMillis();
 
