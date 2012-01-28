@@ -6,7 +6,8 @@ import java.util.Random;
 public class BigNumber {
 	public static void main(String[] args) {
 
-		final int size = 30;
+		// get how many number of points
+		final int size = 10;
 
 		new BigNumber().Run(size);
 
@@ -17,7 +18,7 @@ public class BigNumber {
 
 		Random r = new Random();
 
-		long bigIntegerSize = 5000;
+		long bigIntegerSize = 5000; // initial size
 
 		long[][] data = new long[size][2];
 
@@ -29,19 +30,23 @@ public class BigNumber {
 			data[i][0] = bigIntegerSize;
 			data[i][1] = calculate(bigInteger1, bigInteger2);
 
-			// get next big Integer
+			// get next big Integer, 5000 is step
 			bigIntegerSize += 5000;
+			
+			System.out.println("product size:" + data[i][0] + " duration: " + data[i][1]);
 		}
-
-		for (int i = 0; i < size; ++i) {
-			System.out.println(data[i][0]);
-		}
-		
-		System.out.println("-------------------");
-		
-		for (int i = 0; i < size; ++i) {
-			System.out.println(data[i][1]);
-		}
+//
+//		System.out.println("---for csv format");
+//		
+//		for (int i = 0; i < size; ++i) {
+//			System.out.println(data[i][0]);
+//		}
+//
+//		System.out.println("-------------------");
+//
+//		for (int i = 0; i < size; ++i) {
+//			System.out.println(data[i][1]);
+//		}
 	}
 
 	private BigInteger GenerateBigInteger(long digits, Random r) {
@@ -50,9 +55,10 @@ public class BigNumber {
 
 		for (long i = 0; i < digits; ++i) {
 			char c = Double.toString(r.nextDouble() * 100).charAt(0);
-			// only handle first digits
+			// only handle first digit
+			// if the first digit is zero, try again.
 			if (i == 0 && c == '0') {
-				c = '1';
+				i = -1;
 			}
 			sb.append(c);
 		}
@@ -62,10 +68,10 @@ public class BigNumber {
 
 	private long calculate(BigInteger bigInteger1, BigInteger bigInteger2) {
 
-//		System.out.println("bigInteger1 Length:"
-//				+ bigInteger1.toString().length());
-//		System.out.println("bigInteger2 Length:"
-//				+ bigInteger2.toString().length());
+		System.out.println("bigInteger1 Length:"
+				+ bigInteger1.toString().length());
+		System.out.println("bigInteger2 Length:"
+				+ bigInteger2.toString().length());
 
 		long startTime = System.currentTimeMillis();
 
